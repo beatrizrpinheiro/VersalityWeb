@@ -18,6 +18,17 @@ In this page I'm using into v-container a v-data-picker into v-dialog and v-text
 
 ![image](https://user-images.githubusercontent.com/99905571/178384781-ecd7ef52-fc3a-4d84-8f33-0b0d44957764.png)
 
+### Planos de Ensino
+
+In this page I do API consume for to return the files (teaching planes) and was insert a button for the user make the download of your teaching plan. In the search bar I created a filter method for searching. 
+
+![image](https://user-images.githubusercontent.com/99905571/178385544-e3f007b4-19fe-4ee6-bb04-8f58582124de.png)
+
+### Métodos Ativos
+
+In this page I'm using v-expansion-panels component for to show the concept and step by step for the teachers to apply active methods in their classes.
+
+![image](https://user-images.githubusercontent.com/99905571/178386018-1fbb7a4b-3597-4966-b00e-ac7b935ff3bd.png)
 
 ## Project setup
 ```
