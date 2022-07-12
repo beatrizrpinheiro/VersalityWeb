@@ -1,6 +1,6 @@
 # versality web
 
-Web System for Education 5.0 done in Vue JS, using vuetify components, JavaScript and a Database SQL Server
+Web System for Education 4.0 done in Vue JS, using vuetify components, JavaScript and a Database SQL Server
 
 ### Login Page
 
