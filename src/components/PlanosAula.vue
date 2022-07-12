@@ -1,23 +1,38 @@
 <template>
   <v-container>
     <v-timeline align-top :dense="$vuetify.breakpoint.smAndDown">
-      <v-timeline-item
-        v-for="(item, i) in items"
-        :key="i"
-        :color="item.color"
-        :icon="item.icon"
-        fill-dot
-      >
-        <v-card :color="item.color" dark>
-          <v-card-title class="text-h6"> Lorem Ipsum Dolor </v-card-title>
+      <v-timeline-item color="red lighten-2" icon="mdi-star" fill-dot>
+        <v-card dark color="red lighten-2">
+          <v-card-title class="text-h6"> Objetivo da Aula </v-card-title>
           <v-card-text class="white text--primary">
             <p>
-              Lorem ipsum dolor sit amet, no nam oblique veritus. Commune
-              scaevola imperdiet nec ut, sed euismod convenire principes at. Est
-              et nobis iisque percipit, an vim zril disputando voluptatibus, vix
-              an salutandi sententiae.
+              {{ planosaula[0].objetivo }}
             </p>
-            <v-btn :color="item.color" class="mx-0" outlined> Button </v-btn>
+            <v-btn class="mx-0" outlined> Button </v-btn>
+          </v-card-text>
+        </v-card>
+      </v-timeline-item>
+
+      <v-timeline-item color="purple darken-1" icon="mdi-book-variant" fill-dot>
+        <v-card color="purple darken-1" dark>
+          <v-card-title class="text-h6"> Método Ativo </v-card-title>
+          <v-card-text class="white text--primary">
+            <p>
+              {{ planosaula[0].metodo }}
+            </p>
+            <v-btn class="mx-0" outlined> Button </v-btn>
+          </v-card-text>
+        </v-card>
+      </v-timeline-item>
+
+      <v-timeline-item color="green lighten-1" icon="mdi-airballoon" fill-dot>
+        <v-card dark color="green lighten-1">
+          <v-card-title class="text-h6"> Processual </v-card-title>
+          <v-card-text class="white text--primary">
+            <p v-html="planosaula[0].processual">
+              {{ planosaula[0].processual }}
+            </p>
+            <v-btn class="mx-0" outlined> Button </v-btn>
           </v-card-text>
         </v-card>
       </v-timeline-item>
@@ -25,29 +40,33 @@
   </v-container>
 </template>
 
-<style></style>
+<style>
+.margin-top10 {
+  margin-top: 5%;
+  align-items: center;
+}
+</style>
 
 <script>
+import Planos from "../service/planosaula";
+
 export default {
   data: () => ({
-    items: [
+    planosaula: [
       {
-        color: "red lighten-2",
-        icon: "mdi-star",
-      },
-      {
-        color: "purple darken-1",
-        icon: "mdi-book-variant",
-      },
-      {
-        color: "green lighten-1",
-        icon: "mdi-airballoon",
-      },
-      {
-        color: "indigo",
-        icon: "mdi-buffer",
+        atividade: "",
+        objetivo: "",
+        metodo: "",
+        processual: "",
       },
     ],
   }),
+
+  mounted() {
+    Planos.listar().then((resposta) => {
+      console.log(resposta.data);
+      this.planosaula = resposta.data;
+    });
+  },
 };
 </script>
