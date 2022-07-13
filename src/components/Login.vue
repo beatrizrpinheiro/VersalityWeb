@@ -2,6 +2,22 @@
   <div class="inicio">
     <v-app id="inspire" class="fundo">
       <v-content>
+        <v-snackbar v-model="sucesso">
+          Usuário logado com sucesso
+          <template v-slot:action="{ attrs }">
+            <v-btn color="pink" text v-bind="attrs" @click="snackbar = false">
+              Close
+            </v-btn>
+          </template>
+        </v-snackbar>
+        <v-snackbar v-model="sucesso">
+          Login inválido
+          <template v-slot:action="{ attrs }">
+            <v-btn color="pink" text v-bind="attrs" @click="snackbar = false">
+              Close
+            </v-btn>
+          </template>
+        </v-snackbar>
         <v-container fluid fill-height>
           <v-layout align-center justify-center>
             <v-flex xs12 sm8 md5>
@@ -17,18 +33,24 @@
                       name="login"
                       label="Login"
                       type="text"
+                      v-model="login.usuario"
                     ></v-text-field>
                     <v-text-field
                       id="password"
                       name="password"
                       label="Password"
                       type="password"
+                      v-model="login.senha"
                     ></v-text-field>
                   </v-form>
                 </v-card-text>
                 <v-card-actions>
                   <v-spacer></v-spacer>
-                  <v-btn color="#FFA500" to="/versality" class="labelButton"
+                  <v-btn
+                    :loading="isLoading"
+                    @click="salvarLogin"
+                    color="#FFA500"
+                    class="labelButton"
                     >Login <v-icon left> mdi-login-variant </v-icon></v-btn
                   >
                 </v-card-actions>
@@ -47,10 +69,48 @@
 }
 </style>
 <script>
+import login from "@/service/login";
+
 export default {
-  name: "Login",
-  props: {
-    source: String,
+  data: () => ({
+    sucesso: false,
+    isLoading: false,
+    login: {
+      usuario: "",
+      senha: "",
+    },
+    name: "Login",
+    props: {
+      source: String,
+    },
+  }),
+
+  methods: {
+    stateChange() {
+      const instance = this;
+      setTimeout(function () {
+        this.isLoading = false;
+        instance.$router.push("Home");
+      }, 1000);
+    },
+    salvarLogin() {
+      const instance = this;
+      this.isLoading = true;
+
+      login
+        .salvar(this.login)
+        .then((res) => {
+          instance.sucesso = true;
+
+          this.stateChange();
+
+          console.log(res);
+        })
+        .catch(() => {
+          this.sucesso = true;
+          this.isLoading = false;
+        });
+    },
   },
 };
 </script>
