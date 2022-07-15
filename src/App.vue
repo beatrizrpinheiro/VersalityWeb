@@ -69,7 +69,7 @@ export default {
       {
         title: "Planos de Aula",
         icon: "mdi-notebook-edit-outline",
-        to: "/planos-de-aula",
+        to: "/disciplinas",
       },
 
       {

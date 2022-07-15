@@ -91,7 +91,7 @@ export default {
       const instance = this;
       setTimeout(function () {
         this.isLoading = false;
-        instance.$router.push("Home");
+        instance.$router.push("versality");
       }, 1000);
     },
     salvarLogin() {

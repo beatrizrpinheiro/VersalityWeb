@@ -62,7 +62,7 @@
           >
 
           <v-card-actions>
-            <v-btn text> Clique aqui </v-btn>
+            <v-btn @click="redirect" text> Clique aqui </v-btn>
           </v-card-actions>
         </v-card>
       </v-col>
@@ -90,5 +90,11 @@ export default {
       },
     ],
   }),
+
+  methods: {
+    redirect() {
+      this.$router.push("lista-planos-de-aula");
+    },
+  },
 };
 </script>
