@@ -4,11 +4,11 @@ import VueRouter from "vue-router";
 Vue.use(VueRouter);
 
 const routes = [
-  {
-    path: "/",
-    name: "",
-    component: () => import("../components/Login.vue"),
-  },
+  // {
+  //   path: "/",
+  //   name: "",
+  //   component: () => import("../components/Login.vue"),
+  // },
   {
     path: "/versality",
     name: "Home",
@@ -38,6 +38,18 @@ const routes = [
     path: "/login",
     name: "Login",
     component: () => import("../components/Login.vue"),
+  },
+
+  {
+    path: "/disciplinas",
+    name: "Disciplinas",
+    component: () => import("../components/Disciplinas.vue"),
+  },
+
+  {
+    path: "/lista-planos-de-aula",
+    name: "ListaPlanodeAula",
+    component: () => import("../components/ListaPlanodeAula"),
   },
 ];
 

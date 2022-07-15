@@ -10,7 +10,7 @@
             </v-btn>
           </template>
         </v-snackbar>
-        <v-snackbar v-model="sucesso">
+        <v-snackbar v-model="invalido">
           Login inválido
           <template v-slot:action="{ attrs }">
             <v-btn color="pink" text v-bind="attrs" @click="snackbar = false">
@@ -74,6 +74,7 @@ import login from "@/service/login";
 export default {
   data: () => ({
     sucesso: false,
+    invalido: false,
     isLoading: false,
     login: {
       usuario: "",
@@ -107,7 +108,7 @@ export default {
           console.log(res);
         })
         .catch(() => {
-          this.sucesso = true;
+          this.invalido = true;
           this.isLoading = false;
         });
     },
