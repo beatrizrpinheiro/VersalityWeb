@@ -30,6 +30,13 @@ In this page I'm using v-expansion-panels component for to show the concept and 
 
 ![image](https://user-images.githubusercontent.com/99905571/178386018-1fbb7a4b-3597-4966-b00e-ac7b935ff3bd.png)
 
+### Planos de Aula
+
+In this page I'm using v-timeline component for to show the details of each teacher class. Before this page, will be create a list in cards format for user can go on in this detailment. It was done with API consume, but needs new performances yet. 
+
+![image](https://user-images.githubusercontent.com/99905571/178577917-e4b524f4-8796-4994-9301-ace35fd171d8.png)
+
+
 ## Project setup
 ```
 npm install
